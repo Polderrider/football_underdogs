@@ -182,8 +182,8 @@ def run_load(
 
 if __name__ == "__main__":
     run_load(
-        file_path="data/2425_E0.csv",
-        season="2425",
+        file_path="data/2324_E0.csv",
+        season="2324",
         league="E0",
         mapping_coverage=None,
     )
