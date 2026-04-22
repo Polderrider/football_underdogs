@@ -1,39 +1,12 @@
 # Premier League Football Underdogs
 
-An analysis of premier league football teams taking a perpective of the teams with the highest betting odds in matches - aka the Underdogs - to find out how well they have performed. 
-
-The work combines passion with practice. The general idea was to build an end to end ETL pipeline that collects football csv files
-
-
-as football stats data with no particular end. Beginning with the premier league, the scope of the ananlysis widens to include other leagues as queries and 
-
-
-# What's covered
-Premier league 
-# football data source
-
-
-# extract
-pipeline_fetch.py - download csv datasets
-db.py - create database 
-mappings.py
-
-
-# transform
-pipeline_clean.py
-# load
-main.py
-
-
-# Premier League Football Underdogs
-
 An analysis of Premier League football teams from the perspective of the side with the higher betting odds in each match — the underdog — to explore how often they outperform expectations.
 
 This project combines personal interest with technical practice. The goal was to build a simple end-to-end ETL pipeline that:
 
-- collects football CSV data
-- cleans and standardises the raw inputs
-- loads the data into SQLite
+- collects football match csv files
+- cleans and standardises the raw data
+- loads into SQLite
 - uses SQL to generate KPIs and rankings
 - exposes selected outputs through a lightweight API
 
@@ -48,4 +21,41 @@ It also serves as a practical exercise in:
 - pipeline reliability
 - backend development
 
-# Data pipeline
+## Pipeline
+
+`pipeline_fetch.py` → (`pipeline_clean.py`) → `pipeline_load.py` → `main.py`
+
+## Setup
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+```
+# Fetch raw football csv files. Input desired year and league in file before running.
+python3 pipeline_fetch.py
+
+# Clean and load data into SQLite
+python3 pipeline_load.py
+
+# Run the API locally:
+uvicorn main:app --reload
+
+# Open the API docs:
+http://127.0.0.1:8000/docs
+
+# Explore the database with SQLite:
+sqlite3 football_pipeline.db
+
+# Run SQL query files from the sql/ folder:
+sqlite3 -header -column football_pipeline.db < sql/highest_total_goals.sql
+
+```
+
+
+
+
