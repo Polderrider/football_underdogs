@@ -41,6 +41,14 @@ TEAM_NAME_MAP = {
     "Southampton": "Southampton FC",
     "Sheffield United": "Sheffield United",
     "Luton": "Luton",
+    "West Brom": "West Bromwich Albion",
+    "Cardiff": "Cardiff",
+    "Huddersfield": "Huddersfield",
+    "Watford": "Watford",
+    "Norwich": "Norwich",
+    "Ipswich": "Ipswich",
+
+    
 
 }
 
@@ -52,8 +60,16 @@ def map_team_names(df: pd.DataFrame) -> pd.DataFrame:
     - away_team
     """
 
-    df["home_team"] = df["home_team_raw"].map(TEAM_NAME_MAP)        
+    df["home_team"] = df["home_team_raw"].map(TEAM_NAME_MAP)
     df["away_team"] = df["away_team_raw"].map(TEAM_NAME_MAP)
+
+    unmapped_home = df.loc[df["home_team"].isna(), "home_team_raw"]
+    unmapped_away = df.loc[df["away_team"].isna(), "away_team_raw"]
+
+    unmapped = sorted(set(unmapped_home).union(set(unmapped_away)))
+
+    if unmapped:
+        raise ValueError(f"Unmapped team names. Add {unmapped} to TEAM_NAME_MAP in mappings.py.")
 
     return df
 

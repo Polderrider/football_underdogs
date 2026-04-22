@@ -146,7 +146,7 @@ def download_multiple(
 if __name__ == "__main__":
 
     # ── APIs  ────────────────────────────────────────
-    SEASONS   = [2020, 2021]          # season start years
+    SEASONS   = [2024]          # season start years
     LEAGUES   = ["E0"]          # division codes (see dict above)
     OUTPUT    = "data"       # local output folder
     # ─────────────────────────────────────────────────────────────────────────
