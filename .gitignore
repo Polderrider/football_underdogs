@@ -1,0 +1,11 @@
+TODO.md
+__pycache__/
+*.pyc
+data/
+football.sql
+*.db
+notes.md
+sql/sql_snippets.md
+sql/research_ideas.sql
+
+
